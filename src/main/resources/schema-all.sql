@@ -1,0 +1,8 @@
+DROP TABLE member IF EXISTS;
+
+CREATE TABLE member  (
+    seq BIGINT IDENTITY NOT NULL PRIMARY KEY,
+    name VARCHAR (20),
+    age INTEGER,
+    gender VARCHAR (5)
+);

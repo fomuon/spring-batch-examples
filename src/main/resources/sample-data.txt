@@ -1,0 +1,5 @@
+Lee,10,M
+Jung,12,F
+Park,20,M
+Kim,24,F
+Sin,30,F
