@@ -1,32 +1,77 @@
 package org.yk.example.batch.jobs;
 
-import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.BatchStatus;
-import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-//@Configuration
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {"spring.batch.job.enabled=false", "logging.level.root=info"})
 public class JobTests {
+	@Autowired
+	@Qualifier("sampleJobLauncherTestUtils")
+	private JobLauncherTestUtils sampleJobLauncherTestUtils;
 
 	@Autowired
-	@Qualifier("jobLauncherTestUtils")
-	private JobLauncherTestUtils jobLauncherTestUtils;
+	@Qualifier("faultToleranceSkipExampleJobLauncherTestUtils")
+	private JobLauncherTestUtils faultToleranceSkipExampleJobLauncherTestUtils;
+
+	@Autowired
+	@Qualifier("faultToleranceRetryExampleJobLauncherTestUtils")
+	private JobLauncherTestUtils faultToleranceRetryExampleJobLauncherTestUtils;
+
+	@Autowired
+	@Qualifier("sequentialFlowJobLauncherTestUtils")
+	private JobLauncherTestUtils sequentialFlowJobLauncherTestUtils;
+
+	@Autowired
+	@Qualifier("conditionalFlowJobLauncherTestUtils")
+	private JobLauncherTestUtils conditionalFlowJobLauncherTestUtils;
+
+	@Autowired
+	@Qualifier("splitFlowJobLauncherTestUtils")
+	private JobLauncherTestUtils splitFlowJobLauncherTestUtils;
 
 	@Test
 	public void sampleJobTest() throws Exception {
-		JobExecution jobExecution = jobLauncherTestUtils.launchJob();
-		assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+		JobExecution jobExecution = sampleJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void faultToleranceSkipExampleJobTest() throws Exception {
+		JobExecution jobExecution = faultToleranceSkipExampleJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void faultToleranceRetryExampleJobTest() throws Exception {
+		JobExecution jobExecution = faultToleranceRetryExampleJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void sequentialFlowJobTest() throws Exception {
+		JobExecution jobExecution = sequentialFlowJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void conditionalFlowJobTest() throws Exception {
+		JobExecution jobExecution = conditionalFlowJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void splitFlowJobTest() throws Exception {
+		JobExecution jobExecution = splitFlowJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
 	}
 }

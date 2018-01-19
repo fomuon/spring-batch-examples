@@ -1,9 +1,10 @@
-package org.yk.example.batch.jobs;
+package org.yk.example.batch.jobs.sample;
 
 /**
  * @author yongkyu.lee@navercorp.com
  */
 public class Member {
+	private long seq;
 	private String name;
 	private int age;
 	private String gender;
@@ -11,10 +12,19 @@ public class Member {
 	public Member() {
 	}
 
-	public Member(String name, int age, String gender) {
+	public Member(long seq, String name, int age, String gender) {
+		this.seq = seq;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
+	}
+
+	public long getSeq() {
+		return seq;
+	}
+
+	public void setSeq(long seq) {
+		this.seq = seq;
 	}
 
 	public String getName() {
@@ -39,5 +49,10 @@ public class Member {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%d - name: %s, age: %d, gender: %s", seq, name, age, gender);
 	}
 }
