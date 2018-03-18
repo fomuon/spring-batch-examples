@@ -77,4 +77,15 @@ public class TestJobConfig {
 			}
 		};
 	}
+
+	@Bean
+	public JobLauncherTestUtils emptyJobLauncherTestUtils() {
+		return new JobLauncherTestUtils() {
+			@Override
+			@Autowired
+			public void setJob(@Qualifier("emptyJob")Job job) {
+				super.setJob(job);
+			}
+		};
+	}
 }

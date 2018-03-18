@@ -39,6 +39,10 @@ public class JobTests {
 	@Qualifier("splitFlowJobLauncherTestUtils")
 	private JobLauncherTestUtils splitFlowJobLauncherTestUtils;
 
+	@Autowired
+	@Qualifier("emptyJobLauncherTestUtils")
+	private JobLauncherTestUtils emptyJobLauncherTestUtils;
+
 	@Test
 	public void sampleJobTest() throws Exception {
 		JobExecution jobExecution = sampleJobLauncherTestUtils.launchJob();
@@ -72,6 +76,12 @@ public class JobTests {
 	@Test
 	public void splitFlowJobTest() throws Exception {
 		JobExecution jobExecution = splitFlowJobLauncherTestUtils.launchJob();
+		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+	}
+
+	@Test
+	public void emptyJobTest() throws Exception {
+		JobExecution jobExecution = emptyJobLauncherTestUtils.launchJob();
 		Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
 	}
 }
