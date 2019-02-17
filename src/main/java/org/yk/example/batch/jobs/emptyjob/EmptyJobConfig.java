@@ -5,7 +5,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.FlowBuilder;
-import org.springframework.batch.core.job.builder.JobFlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.context.annotation.Bean;
@@ -49,7 +48,7 @@ public class EmptyJobConfig {
 			.faultTolerant()
 			.skip(Exception.class)
 			.skipLimit(Integer.MAX_VALUE)
-			.reader(new EmptyItemReader(12345))
+			.reader(new EmptyItemReader(100))
 			.processor(new EmptyItemProcessor())
 			.writer(new EmptyItemWriter())
 			.build();
@@ -61,7 +60,7 @@ public class EmptyJobConfig {
 			.faultTolerant()
 			.skip(Exception.class)
 			.skipLimit(Integer.MAX_VALUE)
-			.reader(new EmptyItemReader(5063))
+			.reader(new EmptyItemReader(100))
 			.processor(new EmptyItemProcessor())
 			.writer(new EmptyItemWriter())
 			.build();
@@ -73,7 +72,7 @@ public class EmptyJobConfig {
 			.faultTolerant()
 			.skip(Exception.class)
 			.skipLimit(Integer.MAX_VALUE)
-			.reader(new EmptyItemReader(8567))
+			.reader(new EmptyItemReader(100))
 			.processor(new EmptyItemProcessor())
 			.writer(new EmptyItemWriter())
 			.build();

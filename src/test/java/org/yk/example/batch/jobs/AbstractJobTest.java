@@ -9,10 +9,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.yk.example.batch.config.BatchConfig;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureJdbc
-@Import({ AbstractJobTest.TestConfig.class })
+@Import({ BatchConfig.class, AbstractJobTest.TestConfig.class })
 @TestPropertySource(properties = "spring.batch.job.enabled=false")
 public abstract class AbstractJobTest {
 	@Autowired

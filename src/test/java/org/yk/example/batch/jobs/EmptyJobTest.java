@@ -5,8 +5,9 @@ import org.junit.Test;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.yk.example.batch.jobs.emptyjob.EmptyJobConfig;
 
-@SpringBootTest
+@SpringBootTest(classes = EmptyJobConfig.class)
 public class EmptyJobTest extends AbstractJobTest {
 
 	@Test
