@@ -10,5 +10,6 @@ public class SpringBatchExamplesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBatchExamplesApplication.class, args);
+		System.out.println("func2");
 	}
 }
